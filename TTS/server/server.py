@@ -87,6 +87,13 @@ if args.model_name is not None and not args.model_path:
     model_path, config_path, model_item = manager.download_model(args.model_name)
     args.vocoder_name = model_item["default_vocoder"] if args.vocoder_name is None else args.vocoder_name
 
+    # XTTS fix: if model_path is a dir and config is None, manually find them
+    if config_path is None and model_path and os.path.isdir(model_path):
+        if os.path.exists(os.path.join(model_path, "config.json")):
+            config_path = os.path.join(model_path, "config.json")
+        if os.path.exists(os.path.join(model_path, "model.pth")):
+            model_path = os.path.join(model_path, "model.pth")
+
 if args.vocoder_name is not None and not args.vocoder_path:
     vocoder_path, vocoder_config_path, _ = manager.download_model(args.vocoder_name)
 

@@ -385,7 +385,10 @@ If you don't specify any models, then it uses LJSpeech based English model.
 ```
 $ tts --out_path output/path/speech.wav --model_name "<language>/<dataset>/<model_name>" --source_wav <path/to/speaker/wav> --target_wav <path/to/reference/wav>
 ```
-
+- for example
+```
+$ tts --out_path speech.wav --model_name "tts_models/multilingual/multi-dataset/xtts_v2" --source_wav /input/audio_athos.wav 
+```
 <!-- end-tts-readme -->
 
 ## Directory Structure
